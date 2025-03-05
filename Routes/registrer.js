@@ -32,6 +32,7 @@ try {
       await user.save();
       console.log(req.body.username,req.body.email,req.body.password)
       res.status(201);
+      res.redirect('/login')
       
 }
 catch (err){

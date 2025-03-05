@@ -3,9 +3,13 @@ const router = express.Router() ;
 const User = require('../models/user');
 const bodyParser = require('body-parser');
 const { patch } = require('./fighterRoutes');
+const path = require('path');
 
 router.use(bodyParser.urlencoded({ extended: true }));
-
+ 
+router.get('/',(req,res) => {
+    res.sendFile(path.join(__dirname,'../static/login.html'));
+});
 
 router.post('/',async function(req, res){
    
