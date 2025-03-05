@@ -14,16 +14,26 @@ app.use(express.static('static'));
 // Connexion à la base de données
 connectDB();
 
+
 // Import des routes
 const Fighter = require('./Routes/fighterRoutes');
 const homepage = require('./Routes/homepage');
 const registrer = require('./Routes/registrer');
+const login = require('./Routes/login');
+const dashboard = require('./Routes/dashboard');
+
+console.log(app._router.stack.map(layer => layer.route ? layer.route.path : layer.name));
 
 // Définition des routes
 app.use('/', homepage);
 app.use('/mmaFighter', Fighter);
 app.use('/registrer', registrer);
+app.use('/login', login);
+app.use('/dashboard', dashboard);
 
+app.get('/dashboard-test', (req, res) => {
+    res.sendFile(path.join(__dirname, 'static', 'dashboard.html'));
+});
 // Démarrage du serveur
 app.listen(port, () => {
     console.log(`Server is running at http://localhost:${port}`);

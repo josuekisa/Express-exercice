@@ -5,9 +5,9 @@
 </head>
 
 <body>
-<form action="/registrer" method="post">
-    <label for="nom">username:</label>
-    <input type="text" id="nom" name="nom" required>
+<form id="registrer-form" action="/registrer" method="post">
+    <label for="username">Nom d'utilisateur:</label>
+    <input type="text" id="nom" name="username" required>
     <label for="email">Email:</label>
     <input type="email" id="email" name="email" required>
     <br><br>
@@ -15,7 +15,30 @@
     <input type="password" id="password" name="password" required>
     <br><br>
     <input type="submit" value="S'enregistrer">
+    
 </form>
+
+ <a href="/index.html">Accueil</a>
+<script>
+    document.getElementById("registrer-form").addEventListener('submit', async (e)=>{
+        e.preventDefault;
+        const formData = new FormData(e.target);
+        const response = await fetch('/registrer', {
+            method: 'POST',
+            body: formData
+            
+        });
+        console.log(formData)
+        console.log(response)
+        if(response.ok){
+            alert('Enregistrement réussi');
+        }else{
+            alert('Erreur lors de l\'enregistrement');
+        }
+        console.log(formData)
+        console.log(response)
+    })
+</script>
 </body>
 
 </html>

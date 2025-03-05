@@ -12,6 +12,7 @@
   "dependencies": {
     "bcrypt": "^5.1.1",
     "express": "^4.21.2",
+    "latest": "^0.2.0",
     "mangodb": "^1.0.0",
     "mongodb": "^6.13.1",
     "mongoose": "^8.10.1",
